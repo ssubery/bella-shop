@@ -1,0 +1,45 @@
+:root{--ink:#151b3d;--blue:#2f55d4;--sky:#e8eefc;--teal:#14a89a;--paper:#f7f8fd;--line:#dfe4f4;--red:#c7384f}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 "Noto Sans Lao",system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.band{background:var(--blue);color:#fff;padding:28px 0 24px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+h1{margin:0;font:800 clamp(2rem,6vw,3.6rem)/1 "Bricolage Grotesque","Noto Sans Lao",sans-serif;letter-spacing:-.02em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 14px;cursor:pointer}
+button:hover{border-color:var(--blue)}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.band button{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.band small{margin-right:10px;opacity:.85}
+button.danger{color:var(--red)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:20px 0}
+.tools input{flex:1 1 220px;max-width:320px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.chips{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.chips button{border-radius:99px;padding:4px 14px}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;padding-bottom:60px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.ph{aspect-ratio:1;background:var(--sky);display:grid;place-items:center;font-size:2.4rem;position:relative;cursor:pointer}
+.ph img{width:100%;height:100%;object-fit:cover}
+.out .ph img{filter:grayscale(.8);opacity:.6}
+.tag{position:absolute;top:8px;left:8px;background:var(--ink);color:#fff;font-size:.8rem;padding:1px 10px;border-radius:99px}
+.tag+.tag{top:34px;background:var(--red)}
+.info{padding:12px 14px;flex:1}
+.info h3{margin:0;font-size:1rem;font-weight:600}
+.price{margin:2px 0 0;font-weight:700;color:var(--blue)}
+.hid{opacity:.6;border-style:dashed}
+.adm{display:flex;gap:6px;padding:0 14px 12px}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:#6b7399}
+dialog{border:0;border-radius:12px;padding:22px;width:min(520px,94vw);max-height:92vh}
+dialog::backdrop{background:rgba(21,27,61,.55)}
+dialog img.big{width:100%;border-radius:8px;margin-bottom:10px}
+dialog h2{margin:0 0 4px}
+.form{display:grid;gap:12px;margin-top:12px}
+label{display:grid;gap:3px;font-size:.9rem}
+label.chk{display:flex;gap:8px;align-items:center}
+.form input:not([type=checkbox]),.form select,.form textarea{padding:7px 10px;border:1px solid var(--line);border-radius:8px;width:100%}
+.foot{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:8px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.show{opacity:1}#toast.err{background:var(--red)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

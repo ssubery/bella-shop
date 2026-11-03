@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khaiykhrnglin 🦋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Noto+Sans+Lao:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="band">
+  <div class="wrap row">
+    <h1>Khaiykhrnglin <span aria-hidden="true">🦋</span></h1>
+    <div id="auth"></div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="tools">
+    <input id="q" type="search" placeholder="ຄົ້ນຫາສິນຄ້າ" aria-label="ຄົ້ນຫາສິນຄ້າ">
+    <div id="cats" class="chips"></div>
+    <button id="add" class="primary" hidden>+ ເພີ່ມສິນຄ້າ</button>
+  </div>
+  <section id="grid" class="grid"></section>
+</main>
+<dialog id="modal"></dialog>
+<div id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
