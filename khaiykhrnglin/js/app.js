@@ -36,7 +36,7 @@ function draw() {
     <article class="card ${p.in_stock ? "" : "out"} ${p.is_visible ? "" : "hid"}">
       <div class="ph" data-view="${p.id}">${p.photo_url ? `<img src="${esc(p.photo_url)}" alt="${esc(p.name)}" loading="lazy">` : "🦋"}
         ${p.in_stock ? "" : `<span class="tag">ໝົດແລ້ວ</span>`}${p.is_visible ? "" : `<span class="tag">ເຊື່ອງຢູ່</span>`}</div>
-      <div class="info"><h3>${esc(p.name)}</h3><p class="price">${money(p.price)}</p></div>
+      <div class="info"><h3>${esc(p.name)}</h3><p class="price">${money(p.price)}</p><p class="qty">ຈຳນວນ: ${esc(p.quantity ?? 0)}</p></div>
       ${isAdmin() ? `<div class="adm"><button data-edit="${p.id}">ແກ້ໄຂ</button><button class="danger" data-del="${p.id}">ລົບ</button></div>` : ""}
     </article>`).join("") : `<div class="empty">${items.length ? "ບໍ່ພົບສິນຄ້າ" : "ຍັງບໍ່ມີສິນຄ້າ"}</div>`;
 
@@ -54,6 +54,7 @@ function draw() {
 function view(p) {
   dialog(`${p.photo_url ? `<img class="big" src="${esc(p.photo_url)}" alt="${esc(p.name)}">` : ""}
     <h2>${esc(p.name)}</h2><p class="price">${money(p.price)}${p.in_stock ? "" : " · ໝົດແລ້ວ"}</p>
+    <p>ຈຳນວນຄົງເຫຼືອ: ${esc(p.quantity ?? 0)}</p>
     ${p.category ? `<small>${esc(p.category)}</small>` : ""}
     <p style="white-space:pre-line">${esc(p.description)}</p>
     <div class="foot"><button data-close>ປິດ</button></div>`);
@@ -65,6 +66,7 @@ function form(p = {}) {
     <form class="form">
       <label>ຊື່ສິນຄ້າ<input name="name" required value="${esc(p.name)}"></label>
       <label>ລາຄາ (ກີບ)<input name="price" type="number" min="0" step="any" required value="${esc(p.price ?? 0)}"></label>
+      <label>ຈຳນວນ (ຄົງເຫຼືອ)<input name="quantity" type="number" min="0" step="1" required value="${esc(p.quantity ?? 0)}"></label>
       <label>ໝວດໝູ່<input name="category" list="catlist" value="${esc(p.category)}"></label>
       <datalist id="catlist">${cats.map((c) => `<option value="${esc(c)}">`).join("")}</datalist>
       <label>ລາຍລະອຽດ<textarea name="description" rows="3">${esc(p.description)}</textarea></label>
@@ -77,7 +79,7 @@ function form(p = {}) {
     e.preventDefault();
     const fd = new FormData(e.target);
     const rec = {
-      name: fd.get("name").trim(), price: Number(fd.get("price")),
+      name: fd.get("name").trim(), price: Number(fd.get("price")), quantity: Number(fd.get("quantity")),
       category: fd.get("category").trim() || null, description: fd.get("description").trim() || null,
       in_stock: fd.has("in_stock"), is_visible: fd.has("is_visible"),
     };
