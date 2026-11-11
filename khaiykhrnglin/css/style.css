@@ -11,6 +11,7 @@ button:hover{border-color:var(--blue)}
 button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
 .band button{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
 .band small{margin-right:10px;opacity:.85}
+.qty{margin:2px 0 0;font-size:.85em;color:#777}
 button.danger{color:var(--red)}
 :focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 .tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:20px 0}
